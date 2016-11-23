@@ -32,4 +32,5 @@ sudo /opt/miniconda/bin/pip  install eg  # python bash help
 sudo /opt/miniconda/bin/pip  install pyvim  # vim8 clone
 sudo /opt/miniconda/bin/pip install ptop   # python task manager
 sudo /opt/miniconda/bin/pip install scrapy # python task manager
+sudo /opt/miniconda/bin/pip install picamera# python task manager
 sudo /opt/miniconda/bin/pip install PunkyBrowster # python task manager
