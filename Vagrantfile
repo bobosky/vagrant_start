@@ -22,11 +22,12 @@ Vagrant.configure("2") do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 80, host: 8080
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   # config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "private_network", ip: "192.168.33.11"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -68,17 +69,15 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-  config.vm.synced_folder "" , "/src"
+  config.vm.synced_folder "./data", "/home/vagrant/data"
+  config.vm.synced_folder "./src", "/home/vagrant/src"
 
   config.vm.provision :shell, path: "general.sh"
   config.vm.provision :shell, path: "miniconda.sh"
- # config.vm.provision :shell, path: "crawler.sh"
+  config.vm.provision :shell, path: "crawler.sh"
 
 
 if Vagrant.has_plugin?("vagrant-proxyconf")
-    config.proxy.http     = "http://ftwproxy.corp.kns.com:3128"
-    config.proxy.https    = "http://ftwproxy.corp.kns.com:3128"
-    config.proxy.no_proxy = "localhost,127.0.0.1"
 end
 
 end
